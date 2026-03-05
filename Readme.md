@@ -1,99 +1,95 @@
-# AwardScope 🚀
+# AwardScope
 
-AwardScope is an AI-powered financial aid discovery platform designed to help students unlock their funding potential. By leveraging advanced matching algorithms and generative AI, AwardScope connects students with high-value scholarships and bursaries they actually qualify for—and helps them write the winning essays.
+AwardScope is a technical financial aid intelligence platform designed to connect students with non-dilutive academic funding. By leveraging proprietary matching logic and generative AI architecture, AwardScope identifies high-probability scholarships and bursaries, streamlining the application process from discovery to submission.
 
+## Core Features
 
-## ✨ Key Features
+### Precision Matching Engine
+- **Real-Time Eligibility**: Instantly filters award databases based on GPA, faculty, academic year, and demographic profiles.
+- **Probabilistic Scoring**: Categorizes opportunities into Optimal, High Probability, and Potential matches.
+- **Noise Reduction**: Eliminates ineligible opportunities to focus on actionable funding.
 
-### 🎯 Smart Matching Engine
--   **Real-Time Eligibility**: Instantly filters hundreds of awards based on your GPA, faculty, year, and demographic profile.
--   **Precision Scoring**: categorizes opportunities into **Perfect Matches** (90%+ fit), **Good Matches**, and **Partial Matches**.
--   **Zero Noise**: Hides awards you aren't eligible for, saving you hours of searching.
+### Essay Neural-Architect
+- **Draft Blueprints**: Generates personalized essay structures, semantic hooks, and talking points.
+- **Rubric Optimization**: Analyzes award criteria to suggest the most impactful narrative angles.
+- **Zero Hallucination**: Grounded in student profile data and specific institutional requirements.
 
-### 🧠 AI Essay Architect
--   **Instant Blueprints**: Generates personalized essay outlines, hooks, and talking points for any specific award.
--   **Typewriter Effect**: Watch as the AI "thinks" and types out your essay strategy in real-time.
--   **Tailored Content**: Analyzes the award's criteria to suggest the most impactful angles for your application.
-
-### 💎 Premium "Glassmorphism 2.0" UI
--   **Cosmic Aesthetic**: A deep, immersive dark mode with rich gradients and floating background elements.
--   **Interactive Glass Cards**: Frosted glass effects with dynamic hover glows and lighting.
--   **Fluid Animations**: Smooth transitions and entrance effects powered by `framer-motion`.
+### Technical Editorial UI
+- **Monochrome Aesthetic**: A high-contrast "Ink & Paper" design system optimized for clarity and reduced eye strain.
+- **Data-Dense Layout**: A compact, efficient interface designed to present maximum context without excessive scrolling.
+- **Fluent Interactions**: High-performance transitions and state management powered by Framer Motion.
 
 ---
 
-## 🛠️ Tech Stack
+## Technical Stack
 
 ### Frontend
--   **React 18** (TypeScript)
--   **Tailwind CSS** (Styling & Design System)
--   **Framer Motion** (Advanced Animations)
--   **Lucide React** (Iconography)
--   **Vite** (Build Tool)
--   **Framer Motion** (Animation)
+- **React 18** (TypeScript)
+- **Tailwind CSS** (Utility-first Design System)
+- **Framer Motion** (Motion Orchestration)
+- **Lucide React** (Vector Iconography)
+- **Vite** (Build Infrastructure)
 
 ### Backend
--   **Node.js & Express**
--   **MongoDB** (Database)
--   **Google Gemini API** (Generative AI)
+- **Node.js & Express**
+- **MongoDB** (Persistence Layer)
+- **Google Gemini API** (Neural Processing)
 
 ### DevOps
--   **Docker & Docker Compose** (Containerization)
+- **Docker & Docker Compose** (Containerization & Orchestration)
 
 ---
 
-## 🚀 Getting Started
+## Deployment
 
 ### Prerequisites
--   [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+- Docker Engine and Docker Compose installed.
 
 ### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Tjindl/AwardScope.git
-    cd AwardScope
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Tjindl/AwardScope.git
+   cd AwardScope
+   ```
 
-2.  **Set up Environment Variables:**
-    -   Create a `.env` file in the `Backend` directory.
-    -   Add your MongoDB URI and Gemini API Key:
-        ```env
-        MONGODB_URI=your_mongodb_connection_string
-        GEMINI_API_KEY=your_gemini_api_key
-        ```
+2. **Configure Environment:**
+   Create a `.env` file in the `Backend` directory with the following parameters:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
 
-3.  **Run with Docker:**
-    ```bash
-    docker-compose up --build
-    ```
+3. **Initialize Services:**
+   ```bash
+   docker-compose up --build
+   ```
 
-4.  **Access the App:**
-    -   Frontend: `http://localhost:8080`
-    -   Backend API: `http://localhost:3001`
-
----
-
-## 📖 How to Use
-
-1.  **Select Your University**: Choose from supported institutions (currently UBC) on the home page.
-2.  **Create Your Profile**: Enter your academic details, affiliations, and demographics. No account needed.
-3.  **View Your Matches**: Automatically see the top awards you qualify for, sorted by match strength.
-4.  **Draft Your Essay**: Click the "AI Architect" button on any award card to generate a winning essay structure instantly.
+4. **Access Points:**
+   - Frontend: `http://localhost:8080`
+   - Backend API: `http://localhost:3001`
 
 ---
 
-## 🔮 Roadmap
+## Methodology
 
--   [ ] **Multi-University Support**: Expanding database to SFU, UVic, and BCIT.
--   [ ] **User Accounts**: Save your profile and track applied scholarships.
--   [ ] **Deadline Reminders**: Email notifications for upcoming award deadlines.
--   [ ] **Alumni Success Stories**: ML-based recommendations from successful past applicants.
+1. **Source Selection**: Identify the target institution via the secure portal.
+2. **Profile Ingestion**: Define academic and demographic parameters.
+3. **Registry Match**: Real-time cross-referencing against the BC Student Awards Database.
+4. **Execution Strategy**: Deploy AI-assisted blueprints for application drafting.
 
 ---
 
-## 📄 License
+## Roadmap
+
+- **Extended Registry**: Deployment pending for SFU, UVic, BCIT, and other institutions.
+- **Persistence Layer**: Implementation of secure user vaults for profile persistence.
+- **Chronos Engine**: Automated tracking and notification system for application windows.
+
+---
+
+## License
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
-*Built with ❤️ for Hack the Coast*
+Copyright © 2026 AwardScope Technical Resources
