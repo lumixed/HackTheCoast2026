@@ -454,3 +454,5 @@ app.listen(PORT, () => {
     console.log(`API available at http://localhost:${PORT}/api`);
     console.log(`Gemini AI: ${process.env.GEMINI_API_KEY ? 'Enabled' : 'Using fallback (no API key)'}`);
 });
+
+module.exports = app;
