@@ -2,159 +2,162 @@ import { useState } from "react";
 import StudentForm from "../components/StudentForm";
 import Results from "../components/Results";
 import { StudentFormData, MatchResult } from "../types";
-import { CosmicBackground } from "../components/CosmicBackground";
 import axios from "axios";
 import { useEffect } from "react";
 
 interface MatchResponse {
-  totalMatches: number;
-  matches: MatchResult[];
-  categorized: {
-    perfect: MatchResult[];
-    good: MatchResult[];
-    partial: MatchResult[];
-  };
+    totalMatches: number;
+    matches: MatchResult[];
+    categorized: {
+        perfect: MatchResult[];
+        good: MatchResult[];
+        partial: MatchResult[];
+    };
 }
 
 interface FormPageProps {
-  selectedUniversity: string;
-  onBack: () => void;
+    selectedUniversity: string;
+    onBack: () => void;
 }
 
 export default function FormPage({
-  selectedUniversity,
-  onBack,
+    selectedUniversity,
+    onBack,
 }: FormPageProps) {
-  const [matches, setMatches] = useState<MatchResult[] | null>(null);
-  const [categorized, setCategorized] = useState<{
-    perfect: MatchResult[];
-    good: MatchResult[];
-    partial: MatchResult[];
-  } | null>(null);
-  const [studentData, setStudentData] = useState<StudentFormData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+    const [matches, setMatches] = useState<MatchResult[] | null>(null);
+    const [categorized, setCategorized] = useState<{
+        perfect: MatchResult[];
+        good: MatchResult[];
+        partial: MatchResult[];
+    } | null>(null);
+    const [studentData, setStudentData] = useState<StudentFormData | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-  const handleFormSubmit = async (formData: StudentFormData) => {
-    setLoading(true);
-    setError(null);
+    const handleFormSubmit = async (formData: StudentFormData) => {
+        setLoading(true);
+        setError(null);
 
-    try {
-      // In production, default to relative path (empty string)
-      const defaultUrl = import.meta.env.PROD ? "" : "http://localhost:3001";
-      const apiUrl = import.meta.env.VITE_API_URL || defaultUrl;
+        try {
+            const defaultUrl = import.meta.env.PROD ? "" : "http://localhost:3001";
+            const apiUrl = import.meta.env.VITE_API_URL || defaultUrl;
 
-      const response = await axios.post<MatchResponse>(
-        `${apiUrl}/api/match`,
-        formData
-      );
+            const response = await axios.post<MatchResponse>(
+                `${apiUrl}/api/match`,
+                formData
+            );
 
-      setMatches(response.data.matches);
-      setCategorized(response.data.categorized);
-      setStudentData(formData);
-    } catch (err) {
-      console.error("Error fetching matches:", err);
-      if (axios.isAxiosError(err)) {
-        setError(
-          `Failed to find matches: ${err.message}. ${err.response?.data?.error || ""
-          }`
-        );
-      } else {
-        setError("Failed to find matches. Please try again (Unknown Error).");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+            setMatches(response.data.matches);
+            setCategorized(response.data.categorized);
+            setStudentData(formData);
+        } catch (err) {
+            console.error("Error fetching matches:", err);
+            if (axios.isAxiosError(err)) {
+                setError(
+                    `Failed to find matches: ${err.message}. ${err.response?.data?.error || ""
+                    }`
+                );
+            } else {
+                setError("Failed to find matches. Please try again (Unknown Error).");
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  const handleReset = () => {
-    setMatches(null);
-    setCategorized(null);
-    setStudentData(null);
-    setError(null);
-  };
+    const handleReset = () => {
+        setMatches(null);
+        setCategorized(null);
+        setStudentData(null);
+        setError(null);
+    };
 
-  return (
-    <div className="min-h-screen relative font-sans text-slate-900 dark:text-slate-100 selection:bg-cyan-500/30 overflow-x-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-      <div className="hidden dark:block">
-        <CosmicBackground />
-      </div>
+    return (
+        <div className="min-h-screen relative bg-[var(--bg-primary)] overflow-x-hidden text-[var(--text-primary)]">
+            {/* Design System Overlays */}
+            <div className="grain-overlay" />
+            <div className="grid-pattern absolute inset-0 opacity-20 pointer-events-none" />
 
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-lg transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div
-            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={onBack}
-          >
-            <img
-              src="/logo-transparent.png"
-              alt="AwardScope Logo"
-              className="h-24 w-auto object-contain dark:invert-0 invert"
-            />
-          </div>
-          <button
-            onClick={onBack}
-            className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
-          >
-            ← Back to Home
-          </button>
+            <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-[var(--border-subtle)]">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                    <div
+                        className="flex items-center gap-3 cursor-pointer group"
+                        onClick={onBack}
+                    >
+                        <div className="flex items-center gap-2">
+                            <span className="text-lg font-display font-black tracking-tight group-hover:text-[var(--accent-hero)] transition-colors">
+                                AWARD<span className="text-stroke text-transparent">SCOPE</span>
+                            </span>
+                            <div className="px-2 py-0.5 border border-[var(--accent-hero)] text-[var(--accent-hero)] text-[10px] font-bold tracking-widest uppercase">
+                                {selectedUniversity || 'PORTAL'}
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        onClick={onBack}
+                        className="btn-scope flex items-center gap-2"
+                    >
+                        <span>BACK TO DIRECTORY</span>
+                    </button>
+                </div>
+            </header>
+
+            <main className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto z-10">
+                {error && (
+                    <div className="max-w-3xl mx-auto mb-12">
+                        <div className="bg-red-500/10 border border-red-500/30 text-red-500 px-6 py-4 font-bold text-sm tracking-tight flex items-center gap-3">
+                            <span className="accent-glow block w-2 h-2 rounded-full bg-red-500"></span>
+                            ERROR :: {error.toUpperCase()}
+                        </div>
+                    </div>
+                )}
+
+                {matches === null || categorized === null || studentData === null ? (
+                    <div className="max-w-4xl mx-auto">
+                        <StudentForm
+                            university={selectedUniversity}
+                            onSubmit={handleFormSubmit}
+                            loading={loading}
+                        />
+                    </div>
+                ) : (
+                    <div className="animate-reveal">
+                        <Results
+                            matches={matches}
+                            categorized={categorized}
+                            studentData={studentData}
+                            onReset={handleReset}
+                        />
+                    </div>
+                )}
+            </main>
+
+            <footer className="relative z-10 py-12 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)]">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div>
+                        <span className="text-sm font-display font-black tracking-tight">
+                            AWARD<span className="text-stroke text-transparent opacity-50">SCOPE</span>
+                        </span>
+                        <p className="text-[10px] font-bold text-[var(--text-primary)]/40 mt-1 uppercase tracking-widest">
+                            Financial Aid Intelligence Engine v1.0
+                        </p>
+                    </div>
+
+                    <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-primary)]/60">
+                        <a href="#" className="hover:text-[var(--accent-hero)] transition-colors">Documentation</a>
+                        <a href="#" className="hover:text-[var(--accent-hero)] transition-colors">Infrastructure</a>
+                        <a href="#" className="hover:text-[var(--accent-hero)] transition-colors">Privacy Protcol</a>
+                    </div>
+
+                    <div className="text-[10px] font-bold text-[var(--text-primary)]/40 uppercase tracking-widest">
+                        © 2024 AS_TECH_RES
+                    </div>
+                </div>
+            </footer>
         </div>
-      </header>
-
-      <main className="pt-36 md:pt-44 pb-12 px-4 relative z-0">
-        {error && (
-          <div className="max-w-4xl mx-auto mb-8 px-6 animate-fade-in-up">
-            <div className="bg-red-500/10 border border-red-500/40 text-red-200 px-6 py-4 rounded-xl shadow-lg backdrop-blur-md flex items-center gap-3">
-              <span className="text-red-500 text-xl">⚠️</span> {error}
-            </div>
-          </div>
-        )}
-
-        {matches === null || categorized === null || studentData === null ? (
-          <div className="max-w-3xl mx-auto">
-            <StudentForm
-              university={selectedUniversity}
-              onSubmit={handleFormSubmit}
-              loading={loading}
-            />
-          </div>
-        ) : (
-          <div className="max-w-6xl mx-auto animate-fade-in-up">
-            <Results
-              matches={matches}
-              categorized={categorized}
-              studentData={studentData}
-              onReset={handleReset}
-            />
-          </div>
-        )}
-      </main>
-
-      <footer className="relative z-10 py-8 text-center text-slate-500 text-sm">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="mb-2">
-            Data sourced from{" "}
-            <span className="text-slate-400">UBC Student Services</span>.
-          </p>
-          <div className="flex justify-center gap-4 mt-4 opacity-50 hover:opacity-100 transition-opacity duration-300">
-            <a href="#" className="hover:text-cyan-400">
-              Privacy
-            </a>
-            <span>•</span>
-            <a href="#" className="hover:text-cyan-400">
-              Terms
-            </a>
-            <span>•</span>
-            <a href="#" className="hover:text-cyan-400">
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+    );
 }

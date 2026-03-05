@@ -7,7 +7,7 @@
 :root {
     --bg-primary: #fcfcfd;
     --text-primary: #0a0a0b;
-    --accent-hero: #dfff00;
+    --accent-hero: #1A1A1A;
     --border-subtle: rgba(10, 10, 11, 0.08);
     --grid-color: rgba(10, 10, 11, 0.03);
 }
@@ -15,18 +15,21 @@
 .dark {
     --bg-primary: #0a0a0b;
     --text-primary: #f5f5f7;
-    --accent-hero: #dfff00;
+    --accent-hero: #F3F4F6;
     --border-subtle: rgba(245, 245, 247, 0.1);
     --grid-color: rgba(245, 245, 247, 0.02);
 }
 
 @layer base {
     body {
-        @apply bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-hero)] selection:text-black transition-colors duration-500;
+        @apply bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] transition-colors duration-500;
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    h1, h2, h3, .font-display {
+    h1,
+    h2,
+    h3,
+    .font-display {
         font-family: 'Fraunces', serif;
     }
 }
@@ -82,6 +85,7 @@
     from {
         clip-path: inset(0 100% 0 0);
     }
+
     to {
         clip-path: inset(0 0 0 0);
     }
@@ -92,8 +96,15 @@
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .animate-float {
@@ -101,8 +112,13 @@
 }
 
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .animate-marquee {

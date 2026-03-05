@@ -41,7 +41,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 </div>
             </header>
 
-            <main className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto">
+            <main className="relative pt-24 pb-12 px-6 max-w-7xl mx-auto">
                 {/* Hero Section */}
                 <section className="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
@@ -56,7 +56,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                             </span>
                         </motion.div>
 
-                        <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-10 perspective-text">
+                        <h1 className="text-4xl md:text-6xl font-black leading-[0.9] tracking-tighter mb-6 perspective-text">
                             <motion.span
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="text-lg md:text-xl font-medium leading-relaxed opacity-70 mb-12 max-w-xl"
+                            className="text-base md:text-lg font-medium leading-relaxed opacity-70 mb-8 max-w-xl"
                         >
                             AwardScope leverages proprietary neural matching to connect BC students with non-dilutive funding, bypassing traditional scholarship gatekeepers.
                         </motion.p>
@@ -125,7 +125,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                                 className="absolute top-10 right-10 border border-[var(--text-primary)] bg-[var(--bg-primary)] p-6 w-64 shadow-2xl"
                             >
                                 <div className="flex justify-between items-start mb-6">
-                                    <div className="text-[10px] font-mono opacity-50">NODE_042</div>
+                                    <div className="text-[10px] uppercase font-bold tracking-widest opacity-50">Active_Metric</div>
                                     <Sparkles className="h-4 w-4 text-[var(--accent-hero)]" />
                                 </div>
                                 <div className="text-2xl font-black mb-2">$50,000</div>
@@ -136,15 +136,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                                 </div>
                             </motion.div>
 
-                            <div className="absolute bottom-10 left-10 text-[10px] font-mono uppercase tracking-[0.4em] opacity-40">
-                                [ SYSTEM_STATUS: OPERATIONAL ]
+                            <div className="absolute bottom-10 left-10 text-[10px] uppercase font-bold tracking-[0.4em] opacity-40">
+                                [ STATUS: READY ]
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Partners Marquee */}
-                <section className="mt-32 py-10 border-y border-[var(--border-subtle)] overflow-hidden">
+                <section className="mt-16 py-6 border-y border-[var(--border-subtle)] overflow-hidden">
                     <div className="flex animate-marquee whitespace-nowrap gap-20">
                         {["UBC", "SFU", "UVIC", "BCIT", "CAPILANO", "UNBC", "TRU", "KPU"].map((uni) => (
                             <span key={uni} className="text-4xl font-black opacity-10 tracking-widest hover:opacity-100 transition-opacity cursor-default">
@@ -161,12 +161,12 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 </section>
 
                 {/* Features Bento */}
-                <section id="features" className="mt-32 grid md:grid-cols-12 gap-6">
+                <section id="features" className="mt-16 grid md:grid-cols-12 gap-6">
                     <div className="md:col-span-8 scope-card group">
                         <div className="text-[var(--accent-hero)] mb-8">
                             <PenTool size={40} />
                         </div>
-                        <h3 className="text-4xl font-black mb-4">Essay Neural-Architect</h3>
+                        <h3 className="text-2xl font-black mb-4">Essay Neural-Architect</h3>
                         <p className="text-lg opacity-60 mb-8 max-w-xl">
                             Our proprietary LLM framework analyzes award rubrics to generate high-conversion essay structures and semantic hooks customized to your academic trajectory.
                         </p>
@@ -203,9 +203,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 </section>
 
                 {/* Methodology / How it Works */}
-                <section id="how-it-works" className="mt-40">
-                    <div className="mb-20 text-center">
-                        <h2 className="text-5xl font-black tracking-tighter mb-4">THE FRAMEWORK</h2>
+                <section id="how-it-works" className="mt-20">
+                    <div className="mb-10 text-center">
+                        <h2 className="text-3xl font-black tracking-tighter mb-4">THE FRAMEWORK</h2>
                         <div className="h-1 w-20 bg-[var(--accent-hero)] mx-auto accent-glow" />
                     </div>
 
@@ -216,30 +216,30 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                             { step: "03", title: "Execution", desc: "Deploy AI-assisted applications for maximum funding probability.", icon: <Award /> }
                         ].map((item, i) => (
                             <div key={i} className="bg-[var(--bg-primary)] p-12 transition-colors hover:bg-[var(--accent-hero)] group">
-                                <span className="font-mono text-[10px] opacity-40 mb-8 block group-hover:text-black group-hover:opacity-100">{item.step}</span>
-                                <h3 className="text-2xl font-black mb-4 group-hover:text-black">{item.title}</h3>
-                                <p className="opacity-60 text-sm group-hover:text-black group-hover:opacity-100">{item.desc}</p>
+                                <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-8 block group-hover:text-white group-hover:opacity-100">Phase {item.step}</span>
+                                <h3 className="text-2xl font-black mb-4 group-hover:text-white">{item.title}</h3>
+                                <p className="opacity-60 text-sm group-hover:text-white group-hover:opacity-100">{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
                 {/* Final CTA Portal */}
-                <section id="get-started" className="mt-40 border-4 border-[var(--text-primary)] p-8 md:p-20 relative overflow-hidden">
+                <section id="get-started" className="mt-16 border-4 border-[var(--text-primary)] p-6 md:p-8 relative overflow-hidden">
                     <div className="grid-pattern absolute inset-0 opacity-10" />
                     <div className="relative z-10 text-center max-w-3xl mx-auto">
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 italic">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-6 italic uppercase">
                             INITIALIZE <br /> PORTAL ACCESS
                         </h2>
                         <p className="text-lg opacity-60 mb-12">
                             Select your institution to begin the credentialization and matching process.
                         </p>
-                        <div className="bg-[var(--bg-primary)] p-4 border border-[var(--border-subtle)]">
+                        <div className="bg-[var(--bg-primary)] p-6 border border-[var(--border-subtle)]">
                             <UniversitySelection onSelect={onNavigate} />
                         </div>
                     </div>
                     {/* Decorative Technical Labels */}
-                    <div className="absolute top-4 left-4 text-[8px] font-mono opacity-20 uppercase tracking-[0.5em]">Auth_Proto_V2</div>
+                    <div className="absolute top-4 left-4 text-[8px] font-bold opacity-20 uppercase tracking-[0.5em]">SECURE_PORTAL_V1</div>
                     <div className="absolute bottom-4 right-4 text-[8px] font-mono opacity-20 uppercase tracking-[0.5em]">©2026 AwardScope</div>
                 </section>
             </main>
